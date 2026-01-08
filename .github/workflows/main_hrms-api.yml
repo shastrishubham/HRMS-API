@@ -24,9 +24,9 @@ jobs:
         run: nuget restore HRMS-API.sln
 
       - name: Build & Package project
-        working-directory: HRMS-API\HRMS-API
+        working-directory: HRMS-API
         run: >
-          msbuild HRMS-API.csproj
+          msbuild HRMS-API\HRMS-API.csproj
           /p:Configuration=Release
           /p:DeployOnBuild=true
           /p:WebPublishMethod=Package
@@ -65,6 +65,7 @@ jobs:
           slot-name: Production
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DE49F2BF5BF449788D8F2C64F330CC38 }}
+
 
 
 
