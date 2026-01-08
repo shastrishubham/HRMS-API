@@ -29,19 +29,16 @@ jobs:
             /p:WebPublishMethod=Package `
             /p:PackageAsSingleFile=true `
             /p:SkipInvalidConfigurations=true `
-            /p:PackageLocation="$(Build.SourcesDirectory)\output.zip"
+            /p:PackageLocation="output/output.zip"
 
       - name: Debug – list files
-        run: |
-          Write-Host "PWD: $PWD"
-          Get-ChildItem -Recurse | Select-Object FullName
+        run: Get-ChildItem -Recurse | Select-Object FullName
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: webapp
-          path: |
-            **/*.zip
+          path: output/**/*.zip
 
   deploy:
     runs-on: windows-latest
