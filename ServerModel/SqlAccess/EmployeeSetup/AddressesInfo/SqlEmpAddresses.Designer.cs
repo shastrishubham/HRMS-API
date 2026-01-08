@@ -66,7 +66,7 @@ namespace ServerModel.SqlAccess.EmployeeSetup.AddressesInfo {
         ///
         ///--- GetEmployeeAddressByAddressId.sql.Sql
         ////*
-        ///DECLARE @empDocId UNIQUEIDENTIFIER = &apos;3D360BA8-2B12-4DB7-BAC9-9ADFD3553E1E&apos;
+        ///DECLARE @empAddressId UNIQUEIDENTIFIER = &apos;3D360BA8-2B12-4DB7-BAC9-9ADFD3553E1E&apos;
         ///
         ///*/
         ///
@@ -89,7 +89,7 @@ namespace ServerModel.SqlAccess.EmployeeSetup.AddressesInfo {
         ///      ,[MS_Country_Id]
         ///      ,[PinCode]
         ///      ,[FullAddress]
-        ///      ,[AddressProofDoc]        /// [rest of string was truncated]&quot;;.
+        ///      ,[AddressProofD [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GetEmployeeAddressByAddressId {
             get {

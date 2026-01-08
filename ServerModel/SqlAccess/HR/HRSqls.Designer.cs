@@ -79,14 +79,14 @@ namespace ServerModel.SqlAccess.HR {
         ///      ,hrLnreq.MachineIp
         ///      ,empLnReq.CompId
         ///      ,empLnReq.Id AS &apos;EMP_LNReq_Id&apos;
+        ///	   ,empLnReq.TenureMonths
         ///	  ,Ln.LNTypeName
         ///	  ,Ln.InterestRate
         ///	  ,Ln.MaxAmount
         ///	  ,Ln.IsMaxAmtManual
         ///	  ,msSl.SalaryHeadName
         ///	  ,Ln.MS_SLHead_Id
-        ///	  ,Ln.Percentage
-        ///	  ,empLnReq.ReqA [rest of string was truncated]&quot;;.
+        ///	  ,Ln.P [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GetHRLoanRequestsByStatus {
             get {

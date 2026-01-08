@@ -663,12 +663,17 @@ namespace ServerModel.SqlAccess.MasterSetup {
         ///
         ///
         ///SELECT
-        ///	 Id
-        ///	,CompId
-        ///	,IsEarningHead
-        ///	,AdjustmentType
-        ///	FROM MS_Payroll_AdjustType
-        ///		WHERE CompId = @compId.
+        ///	 ad.Id
+        ///	,ad.CompId
+        ///	,ad.IsEarningHead
+        ///	,ad.AdjustmentType
+        ///	,ad.PercentageAmt
+        ///	,ad.IsRuleBased
+        ///	,ad.MS_SLHeads_Id
+        ///	,sl.SalaryHeadName
+        ///	FROM MS_Payroll_AdjustType AS ad
+        ///		LEFT JOIN MS_SLHeads AS sl ON sl.Id = ad.MS_SLHeads_Id
+        ///		WHERE ad.CompId = @compId.
         /// </summary>
         internal static string GetPayrollAdjustmentTypesByCompId {
             get {
@@ -1279,13 +1284,12 @@ namespace ServerModel.SqlAccess.MasterSetup {
         /// --DECLARE @CompId UNIQUEIDENTIFIER = &apos;C225A53F-9ECB-4B9A-88DC-EAEF6115C2A4&apos;
         /// --DECLARE @IsEarningHead BIT = 1;
         /// --DECLARE @AdjustmentType NVARCHAR(100) = &apos;Arrears&apos;;
+        /// --DECLARE @PercentageAmt DECIMAL(18, 2) = 5;
+        /// --DECLARE @MS_SLHeads_Id INT = 1;
+        /// --DECLARE @IsRuleBased BIT = 1;
         ///
         /// 
-        ///-- MERGE to insert or update
-        ///MERGE MS_Payroll_AdjustType AS target
-        ///USING (select @Id as Id, 
-        ///	@CompId as CompId, 
-        ///	@IsEarningHead A [rest of string was truncated]&quot;;.
+        ///-- MERGE to insert [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UpsertPayrollAdjustmentType {
             get {
