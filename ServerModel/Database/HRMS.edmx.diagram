@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b530c2131b9948dcb416156c5b59dc82" Name="Diagram1" ZoomLevel="65" ShowGrid="true" SnapToGrid="true">
+        <EntityTypeShape EntityType="HRMSModel.EMP_Achievements" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Docs" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_EarningMem" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_OtherInfo" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Shift" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_WorkExp" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Leaves" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.Req_InterviewFedbck" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HRMSModel.Req_InterviewSch" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="HRMSModel.Req_JbForm" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HRMSModel.Req_JbVacancy" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.Req_TrainingFedbck" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HRMSModel.Req_TrainingSch" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_FamilyInfo" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Punch" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Bank" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Branch" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Cities" Width="1.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_CompReg" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Country" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Dept" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Designation" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_DocList" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Leave" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_PayMode" Width="1.5" PointX="16.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Bank_Branch" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Images" Width="1.5" PointX="12.75" PointY="16.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_ImageType" Width="1.5" PointX="16.75" PointY="14.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_AcctInfo" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="HRMSModel.PR_EMP_SL" Width="1.5" PointX="14.75" PointY="17.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_SLHeads" Width="1.5" PointX="16.75" PointY="17.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_InterviewRate" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Training" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Holiday" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Training" Width="1.5" PointX="18.75" PointY="7.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Asset" Width="1.5" PointX="18.75" PointY="11.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_SLHeads" Width="1.5" PointX="18.75" PointY="14.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_SLSetup" Width="1.5" PointX="4.75" PointY="19.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_LeaveReq" Width="1.5" PointX="18.75" PointY="19.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_CompDocs" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Shift" Width="1.5" PointX="20.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_CompPlan" Width="1.5" PointX="20.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HRMSModel.PR_CRT" Width="1.5" PointX="10.75" PointY="20.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_LogInOut" Width="1.5" PointX="20.75" PointY="14.75" />
+        <EntityTypeShape EntityType="HRMSModel.Reim_Appro_Claims" Width="1.5" PointX="20.75" PointY="20.75" />
+        <EntityTypeShape EntityType="HRMSModel.PR_Reimbursement" Width="1.5" PointX="12.75" PointY="21.75" />
+        <EntityTypeShape EntityType="HRMSModel.Reim_Claims" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.HR_HelpDeskReplies" Width="1.5" PointX="22.75" PointY="6.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_TicketCat" Width="1.5" PointX="6.75" PointY="22.75" />
+        <EntityTypeShape EntityType="HRMSModel.HR_HelpDesk" Width="1.5" PointX="22.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Reim_Types" Width="1.5" PointX="15.375" PointY="22.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Info" Width="1.5" PointX="23.75" PointY="15.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_PersonalInfo" Width="1.5" PointX="2.75" PointY="24.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Addr" Width="1.5" PointX="17.375" PointY="24.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_Qualification" Width="1.5" PointX="19.375" PointY="24.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_OfferSL" Width="1.5" PointX="21.375" PointY="24.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_GenDocs" Width="1.5" PointX="23.375" PointY="24.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_LN" Width="1.5" PointX="25.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_LNReq" Width="1.5" PointX="25.375" PointY="4.75" />
+        <EntityTypeShape EntityType="HRMSModel.HR_LNReq" Width="1.5" PointX="5.375" PointY="25.75" />
+        <EntityTypeShape EntityType="HRMSModel.LN_RepPaySch" Width="1.5" PointX="25.375" PointY="9.75" />
+        <EntityTypeShape EntityType="HRMSModel.LN_Disb" Width="1.5" PointX="7.375" PointY="25.75" />
+        <EntityTypeShape EntityType="HRMSModel.PR_EMP_SL_Adjustment" Width="1.5" PointX="25.375" PointY="24.75" />
+        <EntityTypeShape EntityType="HRMSModel.MS_Payroll_AdjustType" Width="1.5" PointX="26.375" PointY="14.75" />
+        <EntityTypeShape EntityType="HRMSModel.EMP_FaceEmbeddings" Width="1.5" PointX="7.375" PointY="19.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

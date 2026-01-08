@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ServerModel/bin
+/ServerModel/obj/Debug
+/ServerModel/obj/Release/edmxResourcesToEmbed/Database
+/ServerModel/obj/Release/TempPE
+/ServerModel/obj/Release
+/packages
+/Model/obj/Debug
+/Database/obj
+/Base/obj
+/.vs
+/HRMS-API/bin
+/HRMS-API/obj

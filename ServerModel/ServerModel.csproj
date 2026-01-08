@@ -1,0 +1,938 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F49F6EC-D258-4957-9BE4-C187A7675DC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServerModel</RootNamespace>
+    <AssemblyName>ServerModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http, Version=2.2.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.2.2.2\lib\netstandard2.0\Microsoft.AspNetCore.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.3.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.3.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.8.0.11\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.2\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.3.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.3.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Schema, Version=3.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.3.0.14\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.1\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Database\EMP_AcctInfo.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Achievements.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Addr.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Docs.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_EarningMem.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_FaceEmbeddings.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_FamilyInfo.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_GenDocs.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Images.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Info.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_LeaveReq.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Leaves.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_LNReq.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_OfferSL.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_OtherInfo.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_PersonalInfo.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Punch.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Qualification.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Shift.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_SLHeads.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_SLSetup.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_Training.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EMP_WorkExp.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HRMS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRMS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HRMS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HRMS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRMS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HR_HelpDesk.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HR_HelpDeskReplies.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HR_LNReq.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\LN_Disb.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\LN_RepPaySch.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Asset.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Bank.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Bank_Branch.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Branch.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Cities.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_CompDocs.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_CompPlan.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_CompReg.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Country.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Dept.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Designation.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_DocList.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Holiday.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_ImageType.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_InterviewRate.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Leave.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_LN.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_LogInOut.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_PayMode.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Payroll_AdjustType.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Reim_Types.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Shift.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_SLHeads.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_TicketCat.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MS_Training.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PR_CRT.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PR_EMP_SL.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PR_EMP_SL_Adjustment.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PR_Reimbursement.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Reim_Appro_Claims.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Reim_Claims.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Req_InterviewFedbck.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Req_InterviewSch.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Req_JbForm.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Req_JbVacancy.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Req_TrainingFedbck.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Req_TrainingSch.cs">
+      <DependentUpon>HRMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DbContext.cs" />
+    <Compile Include="Employee\EmployeeAddressInformationServer.cs" />
+    <Compile Include="Employee\EmployeeBankInformationServer.cs" />
+    <Compile Include="Employee\EmployeeDocumentServer.cs" />
+    <Compile Include="Employee\EmployeeFamilyInformationServer.cs" />
+    <Compile Include="Employee\EmployeeInformationServer.cs" />
+    <Compile Include="Employee\EmployeePersonalInformationServer.cs" />
+    <Compile Include="Employee\EmployeeQualificationInformationServer.cs" />
+    <Compile Include="Employee\EmployeeWorkExperienceInformationServer.cs" />
+    <Compile Include="Entity\Punch\Punch_InOutTime.cs" />
+    <Compile Include="Interfaces\IRespository.cs" />
+    <Compile Include="Masters\BranchSetupServerModel.cs" />
+    <Compile Include="Masters\EmployeeHelper.cs" />
+    <Compile Include="Masters\EmployeeShiftHelper.cs" />
+    <Compile Include="Masters\LeaveHelper.cs" />
+    <Compile Include="Masters\PunchHelper.cs" />
+    <Compile Include="Masters\Recruitment\RecruitmentHelper.cs" />
+    <Compile Include="Model\Base\CompanyDocumentTypes.cs" />
+    <Compile Include="Model\Base\InterviewFeedbackRates.cs" />
+    <Compile Include="Model\Base\InterviewModeTypes.cs" />
+    <Compile Include="Model\Base\InterviewStatusTypes.cs" />
+    <Compile Include="Model\Base\LeaveDurationAllowedTypes.cs" />
+    <Compile Include="Model\Base\LeaveEffectiveAfterOnTypes.cs" />
+    <Compile Include="Model\Base\LeaveFor.cs" />
+    <Compile Include="Model\Base\LeaveStatusType.cs" />
+    <Compile Include="Model\Base\LeaveTypes.cs" />
+    <Compile Include="Model\Base\LoanStatusTypes.cs" />
+    <Compile Include="Model\Base\OfferLetterStatusTypes.cs" />
+    <Compile Include="Model\Base\TrainingStatusTypes.cs" />
+    <Compile Include="Model\Dashboard\BranchWiseEmployeeDto.cs" />
+    <Compile Include="Model\Dashboard\DashboardResponseDto.cs" />
+    <Compile Include="Model\Dashboard\DashboardSummaryDto.cs" />
+    <Compile Include="Model\Dashboard\DepartmentWiseEmployeeDto.cs" />
+    <Compile Include="Model\Dashboard\DesignationWiseEmployeeDto.cs" />
+    <Compile Include="Model\Dashboard\HelpDeskTicketStatusDto.cs" />
+    <Compile Include="Model\Dashboard\InterviewVsOnboardedDto.cs" />
+    <Compile Include="Model\Dashboard\PresentTodayBranchWiseDto.cs" />
+    <Compile Include="Model\Dashboard\ShiftWiseEmployeeDto.cs" />
+    <Compile Include="Model\DataResult.cs" />
+    <Compile Include="Model\Employee\EmplmgEmbedding.cs" />
+    <Compile Include="Model\Employee\EmployeeAddresses.cs" />
+    <Compile Include="Model\Employee\EmployeeAssetDetail.cs" />
+    <Compile Include="Model\Employee\EmployeeAssetInfo.cs" />
+    <Compile Include="Model\Employee\EmployeeBankInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeDocument.cs" />
+    <Compile Include="Model\Employee\EmployeeFamilyInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeGenerateDocInfo.cs" />
+    <Compile Include="Model\Employee\EmployeeImages.cs" />
+    <Compile Include="Model\Employee\EmployeeInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeLeaveRequestInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeLeaveSetupInformation.cs" />
+    <Compile Include="Model\Employee\EmployeePersonalInformation.cs" />
+    <Compile Include="Model\Employee\EmployeePunchInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeQualificationInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeSalaryHeadsSetupDetails.cs" />
+    <Compile Include="Model\Employee\EmployeeSalarySetupDetails.cs" />
+    <Compile Include="Model\Employee\EmployeeShiftInformation.cs" />
+    <Compile Include="Model\Employee\EmployeeWorkExperienceInformation.cs" />
+    <Compile Include="Model\ESS\EmployeeLeaves.cs" />
+    <Compile Include="Model\ESS\EmpLoanRequest.cs" />
+    <Compile Include="Model\ESS\ReimbursementApproverModel.cs" />
+    <Compile Include="Model\ESS\ReimbursementClaims.cs" />
+    <Compile Include="Model\HelpDesk\HelpDeskTckReplies.cs" />
+    <Compile Include="Model\HelpDesk\HelpDeskTicketInformation.cs" />
+    <Compile Include="Model\HR\HRLoanRequest.cs" />
+    <Compile Include="Model\HR\LoanDisbursementInfo.cs" />
+    <Compile Include="Model\HR\LoanRepaymentScheduleInfo.cs" />
+    <Compile Include="Model\HR\LoanValidationInfo.cs" />
+    <Compile Include="Model\Login\LogInOut.cs" />
+    <Compile Include="Model\Masters\AssetInfo.cs" />
+    <Compile Include="Model\Masters\BankBranches.cs" />
+    <Compile Include="Model\Masters\BankInfo.cs" />
+    <Compile Include="Model\Masters\BranchInfo.cs" />
+    <Compile Include="Model\Masters\BranchInformation.cs" />
+    <Compile Include="Model\Masters\CompanyDocument.cs" />
+    <Compile Include="Model\Masters\CompanyPlanDetail.cs" />
+    <Compile Include="Model\Masters\CompanyRegistration.cs" />
+    <Compile Include="Model\Masters\Countries.cs" />
+    <Compile Include="Model\Masters\DepartmentInfo.cs" />
+    <Compile Include="Model\Masters\DepartmentRegistration.cs" />
+    <Compile Include="Model\Masters\DesignationInfo.cs" />
+    <Compile Include="Model\Masters\DocumentUploadInfo.cs" />
+    <Compile Include="Model\Masters\InterviewRatingInfo.cs" />
+    <Compile Include="Model\Masters\LeaveInfo.cs" />
+    <Compile Include="Model\Masters\LoanSetupInfo.cs" />
+    <Compile Include="Model\Masters\LocationRegistration.cs" />
+    <Compile Include="Model\Masters\PayrollAdjustmentType.cs" />
+    <Compile Include="Model\Masters\ReimbursementTypes.cs" />
+    <Compile Include="Model\Masters\SalaryHeadsInfo.cs" />
+    <Compile Include="Model\Masters\ShiftInfo.cs" />
+    <Compile Include="Model\Masters\TicketCategoryInformation.cs" />
+    <Compile Include="Model\Masters\TrainingInfo.cs" />
+    <Compile Include="Model\Payroll\EmployeePayrollInformation.cs" />
+    <Compile Include="Model\Payroll\PayrollInformation.cs" />
+    <Compile Include="Model\Payroll\PayrollReimbursement.cs" />
+    <Compile Include="Model\Payroll\SalaryAdjustment.cs" />
+    <Compile Include="Model\Punch\EmployeeAttendanceInfo.cs" />
+    <Compile Include="Model\Punch\PunchInOut.cs" />
+    <Compile Include="Model\Recruitment\EmployeeGeneratedDocument.cs" />
+    <Compile Include="Model\Recruitment\EmployeeOfferLetterSalaryInfo.cs" />
+    <Compile Include="Model\Recruitment\InterviewFeedback.cs" />
+    <Compile Include="Model\Recruitment\InterviewPortalInformation.cs" />
+    <Compile Include="Model\Recruitment\JobVacancyForm.cs" />
+    <Compile Include="Model\Recruitment\OnlineFormApplication.cs" />
+    <Compile Include="Model\Reports\BranchWiseEmpReportInfo.cs" />
+    <Compile Include="Model\Training\EmployeeTrainingInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DepartmentSetupRepository.cs" />
+    <Compile Include="Repository\DesignationSetupRepository.cs" />
+    <Compile Include="Repository\BranchSetupRespository.cs" />
+    <Compile Include="Repository\EmployeeBankInfoRepository.cs" />
+    <Compile Include="Repository\EmployeeLeaveRequestRepository.cs" />
+    <Compile Include="Repository\EmployeeLeaveSetupRepository.cs" />
+    <Compile Include="Repository\EmployeePersonalRepository.cs" />
+    <Compile Include="Repository\EmployeePunchRepository.cs" />
+    <Compile Include="Repository\EmployeeQualificationRepository.cs" />
+    <Compile Include="Repository\EmployeeRespository.cs" />
+    <Compile Include="Repository\EmployeeShiftSetupRepository.cs" />
+    <Compile Include="Repository\EmployeeWorkExperienceRepository.cs" />
+    <Compile Include="Repository\LeaveTypeInformationRepository.cs" />
+    <Compile Include="Repository\Recruitment\InterviewFeedbackRepository.cs" />
+    <Compile Include="Repository\Recruitment\InterviewPortalRepository.cs" />
+    <Compile Include="Repository\Recruitment\JobVacancyFormRepository.cs" />
+    <Compile Include="Repository\Recruitment\OnlineFormApplicationRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\SalaryHeadsRepository.cs" />
+    <Compile Include="ServerModel\Dashboard\DashboardSetupServer.cs" />
+    <Compile Include="ServerModel\EmployeeSalarySetup\EmployeeSalarySetupServer.cs" />
+    <Compile Include="ServerModel\Ess\EssSetupServer.cs" />
+    <Compile Include="ServerModel\HelpDesk\HelpDeskServer.cs" />
+    <Compile Include="ServerModel\HelpDesk\NumberToWordsConverter.cs" />
+    <Compile Include="ServerModel\Helper\CommonHelper.cs" />
+    <Compile Include="ServerModel\Helper\FinancialYearHelper.cs" />
+    <Compile Include="ServerModel\HR\HRSetupServer.cs" />
+    <Compile Include="ServerModel\Login\LoginSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\AssetSetup\AssetSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\BankBranchSetup\BankBranchServer.cs" />
+    <Compile Include="ServerModel\Masters\BankSetup\BankSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\CompanySetup\CompanySetupServer.cs" />
+    <Compile Include="ServerModel\Masters\DepartmentSetup\DepartmentSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\DesignationSetup\DesignationSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\DocumentSetup\DocumentSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\InterviewRatingSetup\InterviewRatingSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\LeaveSetup\LeaveSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\LoanTypeSetup\LoanTypeSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\LocationSetup\LocationSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\PayrollAdjustmentType\PayrollAdjustmentTypeServer.cs" />
+    <Compile Include="ServerModel\Masters\ReimbursementSetup\ReimbursementSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\SalaryHeads\SalaryHeadsServer.cs" />
+    <Compile Include="ServerModel\Masters\ShiftSetup\ShiftSetupServer.cs" />
+    <Compile Include="ServerModel\Masters\TicketCategory\TicketCategorySetupServer.cs" />
+    <Compile Include="ServerModel\Masters\TrainingSetup\TrainingSetupServer.cs" />
+    <Compile Include="ServerModel\Payroll\PayrollInfoServer.cs" />
+    <Compile Include="ServerModel\Punch\PunchInfoServer.cs" />
+    <Compile Include="ServerModel\Recruitment\RecruitmentServer.cs" />
+    <Compile Include="ServerModel\Report\ReportInfoServer.cs" />
+    <Compile Include="ServerModel\Training\TrainingInfoServer.cs" />
+    <Compile Include="SqlAccess\Attendance\AttendanceSetupAccess.cs" />
+    <Compile Include="SqlAccess\Attendance\AttendanceSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Attendance\IAttendanceSetupAccess.cs" />
+    <Compile Include="SqlAccess\Attendance\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\Dashboard\DashboardSetupAccess.cs" />
+    <Compile Include="SqlAccess\Dashboard\DashboardSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Dashboard\IDashboardSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSalarySetup\EmpSalarySetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSalarySetup\EmpSalarySetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSalarySetup\IEmpSalarySetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSalarySetup\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\AddressesInfo\EmployeeAddressSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\AddressesInfo\EmployeeAddressSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\AddressesInfo\IEmployeeAddressSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\AddressesInfo\SqlEmpAddresses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlEmpAddresses.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\AssetInfo\EmployeeAssetAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\AssetInfo\EmployeeAssetAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\AssetInfo\IEmployeeAssetAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\AssetInfo\Sql\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\BankInfo\EmployeeBankInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\BankInfo\EmployeeBankInfoAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\BankInfo\IEmployeeBankInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\BankInfo\Sql\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\DocumentInfo\EmployeeDocumentAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\DocumentInfo\EmployeeDocumentWrapperAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\DocumentInfo\IEmployeeDocumentAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\DocumentInfo\SqlDocumentUpload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlDocumentUpload.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\FamilyInfo\EmployeeFamilyInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\FamilyInfo\EmployeeFamilyInfoAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\FamilyInfo\IEmployeeFamilyInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\FamilyInfo\Sql\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\GenerateDocs\GenerateDocumentAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\GenerateDocs\GenerateDocumentAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\GenerateDocs\IGenerateDocumentAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\PersonalInfo\EmployeePersonalInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\PersonalInfo\EmployeePersonalInfoAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\PersonalInfo\IEmployeePersonalInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\PersonalInfo\Sql\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\QualificationInfo\EmployeeQualificationInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\QualificationInfo\EmployeeQualificationInfoAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\QualificationInfo\IEmployeeQualificationInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\QualificationInfo\Sql\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\WorkExperienceInfo\EmployeeWorkExpInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\WorkExperienceInfo\EmployeeWorkExpInfoAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\WorkExperienceInfo\IEmployeeWorkExpInfoAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\WorkExperienceInfo\Sql\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeShiftSetup\EmpShiftSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeShiftSetup\EmpShiftSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\EmployeeShiftSetup\IEmpShiftSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeShiftSetup\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\ESS\EssSetupAccess.cs" />
+    <Compile Include="SqlAccess\ESS\EssSql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EssSql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\ESS\IEssSetupAccess.cs" />
+    <Compile Include="SqlAccess\ESS\EssSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\HelpDesk\HelpDeskSetupAccess.cs" />
+    <Compile Include="SqlAccess\HelpDesk\HelpDeskSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\HelpDesk\HelpDeskSqls.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpDeskSqls.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\HelpDesk\IHelpDeskSetupAccess.cs" />
+    <Compile Include="SqlAccess\HR\HRSetupAccess.cs" />
+    <Compile Include="SqlAccess\HR\HRSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\HR\HRSqls.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRSqls.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\HR\IHRSetupAccess.cs" />
+    <Compile Include="SqlAccess\Login\ILoginSetupAccess.cs" />
+    <Compile Include="SqlAccess\Login\LoginSetupAccess.cs" />
+    <Compile Include="SqlAccess\Login\LoginSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Login\LoginSql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginSql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\MasterSetup\AssetSetup\AssetSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\AssetSetup\AssetSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\AssetSetup\IAssetSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\BankBranchSetup\BankBranchSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\BankBranchSetup\BankBranchSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\BankBranchSetup\IBankBranchSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\BankSetup\BankSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\BankSetup\BankSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\BankSetup\IBankSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\CompanySetup\CompanySetupInfoAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\CompanySetup\CompanySetupInfoAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\CompanySetup\ICompanySetupInfoAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DepartmentSetup\DepartmentSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DepartmentSetup\DepartmentSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DepartmentSetup\IDepartmentSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DesignationSetup\DesignationSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DesignationSetup\DesignationSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DesignationSetup\IDesignationSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DocumentSetup\DocumentSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DocumentSetup\DocumentSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\DocumentSetup\IDocumentSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\HelpDeskTicketCategory\HelpDeskTicketCatSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\HelpDeskTicketCategory\HelpDeskTicketCatSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\HelpDeskTicketCategory\IHelpDeskTicketCatSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\InterviewRatingSetup\IInterviewRatingSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\InterviewRatingSetup\InterviewRatingSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\InterviewRatingSetup\InterviewRatingSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LeaveSetup\ILeaveSetupInfo.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LeaveSetup\LeaveSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LeaveSetup\LeaveSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LoanSetup\ILoanSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LoanSetup\LoanSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LoanSetup\LoanSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LocationSetup\ILocationSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LocationSetup\LocationSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\LocationSetup\LocationSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\MasterSetupSqls.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MasterSetupSqls.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\MasterSetup\PayrollAdjustmentTypes\IPayrollAdjustmentsAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PayrollAdjustmentTypes\PayrollAdjustmentsAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PayrollAdjustmentTypes\PayrollAdjustmentsAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\ReimbursementTypes\IReimbursementTypesAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\ReimbursementTypes\ReimbursementTypesAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\ReimbursementTypes\ReimbursementTypesAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\ShiftSetup\IShiftSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\ShiftSetup\ShiftSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\ShiftSetup\ShiftSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\TrainingSetup\ITrainingSetup.cs" />
+    <Compile Include="SqlAccess\MasterSetup\TrainingSetup\TrainingSetupAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\TrainingSetup\TrainingSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Payroll\IPayrollAccess.cs" />
+    <Compile Include="SqlAccess\Payroll\PayrollAccess.cs" />
+    <Compile Include="SqlAccess\Payroll\PayrollWrapperAccess.cs" />
+    <Compile Include="SqlAccess\Payroll\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\Punch\PunchSetupAccess.cs" />
+    <Compile Include="SqlAccess\Punch\PunchSql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PunchSql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\MasterSetup\SalaryHeads\ISalaryHeadsAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\SalaryHeads\SalaryHeadsAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\SalaryHeads\SalaryHeadsAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Recruitment\Generate Docs\EmployeeGeneratedDocAccess.cs" />
+    <Compile Include="SqlAccess\Recruitment\Generate Docs\EmployeeGeneratedDocWrapperAccess.cs" />
+    <Compile Include="SqlAccess\Recruitment\Generate Docs\IEmployeeGeneratedDocAccess.cs" />
+    <Compile Include="SqlAccess\Recruitment\Interviews\IInterviewSetupAccess.cs" />
+    <Compile Include="SqlAccess\Recruitment\Interviews\InterviewSetupAccess.cs" />
+    <Compile Include="SqlAccess\Recruitment\Interviews\InterviewSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Recruitment\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\TrainingSetup\ITrainingSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\TrainingSetup\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\EmployeeSetup\TrainingSetup\TrainingSetupAccess.cs" />
+    <Compile Include="SqlAccess\EmployeeSetup\TrainingSetup\TrainingSetupAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Reports\IReportAccess.cs" />
+    <Compile Include="SqlAccess\Reports\ReportAccess.cs" />
+    <Compile Include="SqlAccess\Reports\ReportAccessWrapper.cs" />
+    <Compile Include="SqlAccess\Reports\Sql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Database\HRMS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HRMS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Database\HRMS.edmx.diagram">
+      <DependentUpon>HRMS.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\HRMS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HRMS.Context.cs</LastGenOutput>
+      <DependentUpon>HRMS.edmx</DependentUpon>
+    </Content>
+    <Content Include="Database\HRMS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRMS.edmx</DependentUpon>
+      <LastGenOutput>HRMS.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlAccess\Attendance\Sql\GetEmployeePunchesById.sql" />
+    <Content Include="SqlAccess\EmployeeSalarySetup\Sql\GetUnSetupSalaryEmployeesByDesignationId.sql" />
+    <Content Include="SqlAccess\EmployeeSalarySetup\Sql\GetEmpSalarySetupDetails.sql" />
+    <Content Include="SqlAccess\EmployeeSalarySetup\Sql\GetSalarySetupByCompId.sql" />
+    <Content Include="SqlAccess\EmployeeSalarySetup\Sql\AddUpdateEmpSalarySetup.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\AddressesInfo\Sql\GetEmployeeAddressByAddressId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\AddressesInfo\Sql\UpsertEmployeeAddresses.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\AssetInfo\Sql\UpsertEmployeeAssetDetails.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\BankInfo\Sql\GetEmployeeAccountDetailbyEmpId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\BankInfo\Sql\UpsertEmployeeBankInfo.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\DocumentInfo\Sql\GetEmployeeDocumentsByDocId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\DocumentInfo\Sql\GetEmployeeDocumentsByEmpId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\DocumentInfo\Sql\UpsertEmployeeDocumentInfo.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\FamilyInfo\Sql\UpsertEmployeeFamilyInfo.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\PersonalInfo\Sql\GetEmployeeApproverByEmpId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\PersonalInfo\Sql\UpsertEmployeePersonalInfo.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\QualificationInfo\Sql\UpsertEmployeeQualificationInfo.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\WorkExperienceInfo\Sql\UpsertEmployeeWorkExperienceInfo.sql" />
+    <Content Include="SqlAccess\EmployeeShiftSetup\Sql\GetEmployeeShiftDetailByBranchId.sql" />
+    <Content Include="SqlAccess\EmployeeShiftSetup\Sql\GetEmployeeShiftsByBranchIdAndShiftId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\AddUpdateEmployeeLeaves.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetEmployeeLoanRequestByCompId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetEmployeeLeaveReqByLeaveStatusAndCompId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetEmployeeAvailableLeavesById.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetEmployeeLeaveReqById.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetReimbursementClaimsByEmpId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetReimbursementClaimsByCompIdAndBranchId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetReimbursementClaimsByCompId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\GetEmployeeLeaveReqsByCompId.sql" />
+    <Content Include="SqlAccess\ESS\Sql\UpsertEmployeeLoanRequest.sql" />
+    <Content Include="SqlAccess\ESS\Sql\UpdateEmployeeLeaveRequestStatusByIdAndStatus.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\PersonalInfo\Sql\GetEmployeeDetailByEmailAddress.sql" />
+    <Content Include="SqlAccess\ESS\Sql\ApproveReimbursementClaims.sql" />
+    <Content Include="SqlAccess\ESS\Sql\UpsertReimbursementClaims.sql" />
+    <Content Include="SqlAccess\HelpDesk\Sql\GetHelpDeskTckRepliesByTicketId.sql" />
+    <Content Include="SqlAccess\HelpDesk\Sql\GetHelpDeskTicketInformationByCompId.sql" />
+    <Content Include="SqlAccess\HelpDesk\Sql\UpsertHelpDeskTicketReplies.sql" />
+    <Content Include="SqlAccess\HelpDesk\Sql\UpsertHelpDeskTicketCreation.sql" />
+    <Content Include="SqlAccess\HR\Sqls\GetHRLoanRequestsByStatus.sql" />
+    <Content Include="SqlAccess\HR\Sqls\UpsertHRLoanRequest.sql" />
+    <Content Include="SqlAccess\Login\Sql\UpsertLogInOutUser.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetPayrollAdjustmentTypesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetLoanTypesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetReimbursementTypesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetCompPlanDetailsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetCompDocsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetBankBranchesByBankIdAndCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetBankBranchesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetAssetsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetInterviewRating.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetMastersDocTemplateById.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetShiftDetailsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetShiftDetailsByBranchIdAndCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetSalaryHeadsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetLeaveDetails.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetCitiesByStateId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetCompanyRegistrationDetailsById.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetBanksDetails.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetDesignationsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetMastersDocsTemplates.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetTicketCategoriesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetTrainingsByDesignationIdAndCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetTrainingsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetStatesByCountryId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetCountries.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetDepartmentDetails.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetDepartmentDetailsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetLocationDetailsByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetLocationDetails.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertPayrollAdjustmentType.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertLoanType.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertTicketCategory.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertReimbursementTypes.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertCompanyPlanDetail.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertCompanyDocument.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertAsset.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertBankBranch.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertInterviewRating.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertMasterDocTemplate.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertTraining.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertShift.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertSalaryHeads.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertLeave.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertBank.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertDesignation.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertDepartment.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertBranch.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetCompanyRegistrationDetails.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\CompanyRegistration.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetSalaryAdjustmentsByPayrollMonthYear.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetCalculatedPayrollDetailsByBranch_ByShiftAllowance.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetEmployeeReimbursementsByBranchAndMonth.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetEmployeeSalaryHeadsDetails.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetEmployeeSalarySlipByMonthAndId.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetCalculatedSalaryAdjustmentByAdjustmentIdByEmployees.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetSalaryAdjustmentEmployeesByCompId.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\UpsertEmpSalaryAdjustment.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\UpsertPayrollReimbursements.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\UpsertPayrollCreation.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetCalculatedPayrollDetailsByBranch.sql" />
+    <Content Include="SqlAccess\Payroll\Sql\GetEmpPayrollByBranchMonth.sql" />
+    <Content Include="SqlAccess\Punch\Sql\GetEmployeesPunchesByComIdAndShiftId.sql" />
+    <Content Include="SqlAccess\Punch\Sql\GetEmployeePunches.sql" />
+    <Content Include="SqlAccess\Punch\Sql\GetPresentEmpByBranch.sql" />
+    <Content Include="SqlAccess\Punch\Sql\AddPunchInOut.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetDocGeneratedCandidatesByCompId.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetConfirmedCandidatesByCompId.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\UpdateGeneratedDocStatusById.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetGeneratedDocById.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetGeneratedDocumentsByCompId.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetEmpOfferSalaryByDocId.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetInterviewFeedbacksByCompIdAndRating.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetCandidateDetailsForGenerateDocById.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetScheduleInterviewsByCompId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\TrainingSetup\Sql\GetEmployeeTrainingsByCompId.sql" />
+    <Content Include="SqlAccess\EmployeeSetup\TrainingSetup\Sql\UpsertEmployeeTraining.sql" />
+    <Content Include="SqlAccess\Reports\Sql\BranchWiseEmpReports.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Login\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlAccess\Attendance\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSalarySetup\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\AddressesInfo\SqlEmpAddresses.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlEmpAddresses.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\AssetInfo\Sql\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\BankInfo\Sql\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\DocumentInfo\SqlDocumentUpload.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlDocumentUpload.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\FamilyInfo\Sql\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\PersonalInfo\Sql\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\QualificationInfo\Sql\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\WorkExperienceInfo\Sql\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeShiftSetup\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\ESS\EssSql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EssSql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\HelpDesk\HelpDeskSqls.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HelpDeskSqls.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\HR\HRSqls.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HRSqls.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\Login\LoginSql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginSql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\MasterSetup\MasterSetupSqls.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MasterSetupSqls.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\Payroll\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\Punch\PunchSql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PunchSql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\Recruitment\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\EmployeeSetup\TrainingSetup\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\Reports\Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

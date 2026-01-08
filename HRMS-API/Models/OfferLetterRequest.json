@@ -1,0 +1,47 @@
+{
+  "CompanyName": "Acme Technologies Pvt. Ltd.",
+  "CompanyAddressLine1": "3rd Floor, Sunrise Plaza",
+  "CompanyAddressLine2": "Baner Road",
+  "CityStatePin": "Pune, MH 411045",
+
+  "CandidateFullName": "Ajinkya Shastri",
+  "CandidateAddress": "Flat 302, Green Meadows, Pune",
+
+  "JobTitle": "Senior Software Developer",
+  "Location": "Pune",
+  "ReportingManager": "Engineering Manager",
+  "DateOfJoining": "01/09/2025",
+  "OfferDate": "23/08/2025",
+
+  "ProbationPeriod": "3",
+  "ProbationPeriodWords": "Three",
+  "AnnualCtcFigures": "12,00,000",
+  "AnnualCtcWords": "Twelve Lakh only",
+  "NoticePeriod": "60 days",
+  "WorkingHours": "9:30 AM to 6:30 PM, Monday to Friday",
+
+  "Components": [
+    {
+      "Name": "Basic Salary",
+      "Monthly": "40,000",
+      "Annual": "4,80,000"
+    },
+    {
+      "Name": "House Rent Allowance (HRA)",
+      "Monthly": "20,000",
+      "Annual": "2,40,000"
+    },
+    {
+      "Name": "Special Allowance",
+      "Monthly": "28,000",
+      "Annual": "3,36,000"
+    },
+    {
+      "Name": "Employer PF Contribution",
+      "Monthly": "4,800",
+      "Annual": "57,600"
+    }
+  ],
+  "TotalCtcMonthly": "92,800",
+  "TotalCtcAnnual": "11,13,600"
+}
