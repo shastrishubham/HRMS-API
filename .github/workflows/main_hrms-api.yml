@@ -6,9 +6,9 @@ on:
       - main
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: HRMS-API
+
+
+
 
 jobs:
   build:
@@ -24,15 +24,15 @@ jobs:
         uses: NuGet/setup-nuget@v1.2.0
 
       - name: Restore packages
-        run: nuget restore HRMS-API.sln
+        run: nuget restore
 
-      - name: Build and package
-        run: msbuild HRMS-API.csproj /p:Configuration=Release /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PackageLocation="output.zip"
+      - name: Build and publish
+        run: msbuild /p:Configuration=Release /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="output.zip"
 
       - uses: actions/upload-artifact@v4
         with:
           name: webapp
-          path: HRMS-API/output.zip
+          path: output.zip
 
   deploy:
     runs-on: windows-latest
@@ -48,4 +48,4 @@ jobs:
         with:
           app-name: 'HRMS-API'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DE49F2BF5BF449788D8F2C64F330CC38 }}
-          package: output.zip
+          package: webapp/output.zip
