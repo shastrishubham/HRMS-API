@@ -112,7 +112,7 @@ namespace ServerModel.SqlAccess.Recruitment {
         ///		,desg.DesignationName
         ///		,hiremng.FullName AS &apos;ReportingManager&apos;
         ///		,intSch.Id AS &apos;InterviewScheduledId&apos;
-        ///	FROM E [rest of string was truncated]&quot;;.
+        ///		,intS [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GetConfirmedCandidatesByCompId {
             get {

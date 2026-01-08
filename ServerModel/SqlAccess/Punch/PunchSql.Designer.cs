@@ -88,26 +88,22 @@ namespace ServerModel.SqlAccess.Punch {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///
-        ///----Sql.GetEmployeesPunchesByComIdAndShiftId
+        ///   Looks up a localized string similar to ---- Sql.GetEmployeesPunchesByComIdAndShiftId
         ///
         ////*
-        ///
         ///DECLARE @compId UNIQUEIDENTIFIER = &apos;00000000-0000-0000-0000-000000000000&apos;
-        ///DECLARE @shiftId INT = 2
+        ///DECLARE @shiftId INT = 4005
+        ///DECLARE @filterDate DATE = &apos;2025-09-01&apos;  -- Pass the date to filter by month &amp; year
         ///
         ///*/
-        ///
         ///
         ///;WITH PunchesRanked AS (
         ///    SELECT
         ///        attd.EMP_Info_Id,
         ///        attd.punchDate,
         ///        attd.punchTime,
-        ///        attd.status,
         ///        ROW_NUMBER() OVER (PARTITION BY attd.EMP_Info_Id, attd.punchDate ORDER BY attd.punchTime ASC) AS rank_in,
-        ///        ROW_NUMBER() OVER (PARTITION BY attd.EMP_Info_Id, attd.punchDate ORDER BY attd.punc [rest of string was truncated]&quot;;.
+        ///        ROW_NUMBER() OVER (PARTI [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GetEmployeesPunchesByComIdAndShiftId {
             get {

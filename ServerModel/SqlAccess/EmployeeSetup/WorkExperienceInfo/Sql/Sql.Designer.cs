@@ -65,7 +65,7 @@ namespace ServerModel.SqlAccess.EmployeeSetup.WorkExperienceInfo.Sql {
         ///--select * from [dbo].[EMP_WorkExp]
         ///
         ///
-        ///------ UpsertEmployeeQualification
+        ///------ UpsertEmployeeWorkExperience
         ///--DECLARE @empId uniqueidentifier = &apos;F4E804F9-6F67-46B0-BB51-69C1E9DCD82D&apos;
         ///
         ///--DECLARE @json nvarchar(max) = 
@@ -78,7 +78,7 @@ namespace ServerModel.SqlAccess.EmployeeSetup.WorkExperienceInfo.Sql {
         ///--		&quot;CompId&quot;:&quot;00000000-0000-0000-0000-000000000000&quot;,
         ///--		&quot;CreatedBy&quot;:&quot;00000000-0000-0000-0000-000000000000&quot;,
         ///--		&quot;EMP_Info_Id&quot;:&quot;F4E804F9-6F67-46B0-BB51-69C1E9DCD82D&quot;,
-        ///--		 [rest of string was truncated]&quot;;.
+        ///--	 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string UpsertEmployeeWorkExperienceInfo {
             get {
