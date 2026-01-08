@@ -11,54 +11,66 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.3.3
+        uses: microsoft/setup-msbuild@v1.3.1
 
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.2.0
+        uses: NuGet/setup-nuget@v1
 
       - name: Restore NuGet packages
         run: nuget restore HRMS-API.sln
 
-      - name: Build and Package Web App
-        run: |
-          msbuild HRMS-API.sln `
-            /p:Configuration=Release `
-            /p:WebPublishMethod=Package `
-            /p:PackageAsSingleFile=true `
-            /p:SkipInvalidConfigurations=true `
-            /p:PackageLocation="$(Build.SourcesDirectory)\output.zip"
+      - name: Build & Package project
+        working-directory: HRMS-API.sln
+        run: >
+          msbuild HRMS-API.csproj
+          /p:Configuration=Release
+          /p:DeployOnBuild=true
+          /p:WebPublishMethod=Package
 
-      - name: Debug – list files
+      - name: Prepare publish folder
         run: |
-          Write-Host "PWD: $PWD"
-          Get-ChildItem -Recurse | Select-Object FullName
+          if (!(Test-Path HRMS-API\publish)) {
+            mkdir HRMS-API\publish
+          }
+          xcopy DarakhsHC-API\obj\Release\Package\PackageTmp\* HRMS-API\publish\ /E /I /Y
+
+      - name: Verify publish folder
+        run: dir HRMS-API\publish
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: webapp
-          path: |
-            **/*.zip
+          path: HRMS-API\publish
+          if-no-files-found: error
 
   deploy:
     runs-on: windows-latest
     needs: build
 
     steps:
-      - name: Download Artifact
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: webapp
 
-      - name: Debug – show ZIP path
-        run: Get-ChildItem -Recurse | Select-Object FullName
-
-      - name: Deploy to Azure
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'HRMS-API'
+          app-name: HRMS-API
+          slot-name: Production
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DE49F2BF5BF449788D8F2C64F330CC38 }}
-          package: "**/*.zip"
+
+
+
+
+
+
+
+
+
