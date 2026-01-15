@@ -6,46 +6,84 @@ on:
       - main
   workflow_dispatch:
 
-
-
-
-
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.3.3
+        uses: microsoft/setup-msbuild@v1.3.1
 
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.2.0
+        uses: NuGet/setup-nuget@v1
 
-      - name: Restore packages
-        run: nuget restore
+      - name: Restore NuGet packages
+        run: nuget restore HRMS-API.sln
 
-      - name: Build and publish
-        run: msbuild /p:Configuration=Release /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="output.zip"
+      - name: Build & Package project
+        working-directory: HRMS-API
+        run: >
+          msbuild HRMS-API.csproj
+          /p:Configuration=Release
+          /p:DeployOnBuild=true
+          /p:WebPublishMethod=Package
 
-      - uses: actions/upload-artifact@v4
+      - name: Replace HRMSEntities token in publish output
+        shell: pwsh
+        run: |
+          $configPath = "HRMS-API\obj\Release\Package\PackageTmp\Web.config"
+          (Get-Content $configPath) -replace '\$\((ReplacableToken_HRMSEntities-Web\.config Connection String_0)\)', 'metadata=res://*/Database.HRMS.csdl|res://*/Database.HRMS.ssdl|res://*/Database.HRMS.msl;provider=System.Data.SqlClient;provider connection string="Server=tcp:hrms-q.database.windows.net,1433;Initial Catalog=hrms;Persist Security Info=False;User ID=hrms;Password=Ajinkya1@;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"' | Set-Content $configPath
+
+      - name: Prepare publish folder
+        run: |
+          if (!(Test-Path HRMS-API\publish)) {
+            mkdir HRMS-API\publish
+          }
+          xcopy HRMS-API\obj\Release\Package\PackageTmp\* HRMS-API\publish\ /E /I /Y
+
+      - name: Verify publish folder
+        run: dir HRMS-API\publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
           name: webapp
-          path: output.zip
+          path: HRMS-API\publish
+          if-no-files-found: error
 
   deploy:
     runs-on: windows-latest
     needs: build
 
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
           name: webapp
 
-      - name: Deploy to Azure
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'HRMS-API'
+          app-name: HRMS-API
+          slot-name: Production
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DE49F2BF5BF449788D8F2C64F330CC38 }}
-          package: webapp/output.zip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
