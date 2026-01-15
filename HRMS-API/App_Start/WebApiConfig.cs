@@ -14,14 +14,8 @@ namespace HRMS_API
 
         public static void Register(HttpConfiguration config)
         {
-            var cors = new EnableCorsAttribute(
-            "https://hrms-ui-awakdga9dtbeenar.centralindia-01.azurewebsites.net",
-            "*",
-            "*"
-            );
-
             // Web API configuration and services
-            config.EnableCors(cors);
+            config.EnableCors();
 
             config.Filters.Add(new AuthorizeAttribute()); // Secures all APIs by default
 
