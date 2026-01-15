@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace HRMS_API
 {
@@ -13,8 +14,14 @@ namespace HRMS_API
 
         public static void Register(HttpConfiguration config)
         {
+            var cors = new EnableCorsAttribute(
+            "*",
+            "*",
+            "*"
+            );
+
             // Web API configuration and services
-            config.EnableCors();
+            config.EnableCors(cors);
 
             config.Filters.Add(new AuthorizeAttribute()); // Secures all APIs by default
 
