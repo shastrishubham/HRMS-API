@@ -22,6 +22,7 @@ WITH FirstPunchPerDay AS (
     GROUP BY EMP_Info_Id, CAST(PunchDate AS DATE)
 ),
 
+--select * from FirstPunchPerDay
 -- Paid leave days
 PaidLeaves AS (
     SELECT 
@@ -69,6 +70,8 @@ SalarySummary AS (
     GROUP BY es.EMP_Info_Id
 ),
 
+--select * from SalarySummary
+
 -- Shift Allowance Calculation
 ShiftAllowanceCalc AS (
      SELECT 
@@ -95,6 +98,8 @@ ShiftAllowanceCalc AS (
         )
     GROUP BY es.EMP_Info_Id, es.MS_Shift_Id, s.ShiftAllowanceAmtPerDay
 ),
+
+--select * from ShiftAllowanceCalc
 
 ShiftAllowancePerEmp AS (
     SELECT 
@@ -145,6 +150,9 @@ AdjDeduction AS (
     GROUP BY EMP_Info_Id
 ),
 
+
+
+
 -- Final Payroll Calculation
 PayrollCalculation AS (
     SELECT 
@@ -183,7 +191,7 @@ PayrollCalculation AS (
         ) + ISNULL(sa.TotalShiftAllowance,0) AS FinalPay
 
     FROM EMP_Info e
-    LEFT JOIN SalarySummary s ON e.Id = s.EMP_Info_Id
+    INNER JOIN SalarySummary s ON e.Id = s.EMP_Info_Id
 
     LEFT JOIN (
         SELECT EMP_Info_Id, COUNT(DISTINCT WorkDate) AS PunchDays
@@ -207,11 +215,13 @@ PayrollCalculation AS (
 	LEFT JOIN LoanDeductions ld ON ld.EMP_Info_Id = e.Id
 	LEFT JOIN AdjEarning ae ON ae.EMP_Info_Id = e.Id
     LEFT JOIN AdjDeduction ad ON ad.EMP_Info_Id = e.Id
-	WHERE MONTH(e.DateOfJoining) <= @Month
-		AND YEAR(e.DateOfJoining) <= @Year
+	WHERE e.DateOfJoining <= DATEFROMPARTS(@Year, @Month, 31)
 		AND (e.ConfirmationDate IS NULL 
 			OR MONTH(e.ConfirmationDate) <= @Month OR YEAR(e.ConfirmationDate) <= @Year)
 )
+
+--select * from PayrollCalculation
+
 
 -- Final Output with Branch & Payroll Status
 SELECT
@@ -238,6 +248,7 @@ FROM PayrollCalculation e
 INNER JOIN EMP_Shift empShift ON empShift.EMP_Info_Id = e.EMP_Info_Id AND empShift.IsAmmend = 0
 INNER JOIN MS_Shift shift ON shift.Id = empShift.MS_Shift_Id
 INNER JOIN MS_Branch branch ON branch.Id = shift.MS_Branch_Id
+--INNER JOIN EMP_SLSetup empSLsetup ON empSLsetup.EMP_Info_Id = e.EMP_Info_Id
 LEFT JOIN PR_CRT payrollCrt ON payrollCrt.EMP_Info_Id = e.EMP_Info_Id
     AND MONTH(payrollCrt.PayrollCreationDt) = @Month
 	AND payrollCrt.IsAmmend = 0

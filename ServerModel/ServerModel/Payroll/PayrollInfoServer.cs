@@ -72,6 +72,8 @@ namespace ServerModel.ServerModel.Payroll
 
         public bool UpsertSalaryAdjustment(List<SalaryAdjustment> salaryAdjustments)
         {
+            decimal addjustmentAmount = salaryAdjustments.FirstOrDefault().Amount;
+
             List<SalaryAdjustment> calcSalaryAdjustments = new List<SalaryAdjustment>();
 
             List<Guid> empIds = salaryAdjustments.Select(x => x.EMP_Info_Id).Distinct().ToList();
@@ -84,7 +86,7 @@ namespace ServerModel.ServerModel.Payroll
                 SalaryAdjustment calAdj = calcAdjustments.FirstOrDefault(x => x.EMP_Info_Id == salaryAdjustment.EMP_Info_Id);
                 if(calAdj != null)
                 {
-                    salaryAdjustment.Amount = calAdj.CalculatedAdjustmentAmount;
+                    salaryAdjustment.Amount = addjustmentAmount;
                     calcSalaryAdjustments.Add(salaryAdjustment);
                 }
             }
