@@ -133,9 +133,6 @@
   <data name="GetEmpPayrollByBranchMonth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sql\getemppayrollbybranchmonth.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="GetCalculatedPayrollDetailsByBranch_ByShiftAllowance" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>sql\getcalculatedpayrolldetailsbybranch_byshiftallowance.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="GetEmployeeSalaryHeadsDetails" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sql\getemployeesalaryheadsdetails.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -153,5 +150,8 @@
   </data>
   <data name="GetSalaryAdjustmentsByPayrollMonthYear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sql\getsalaryadjustmentsbypayrollmonthyear.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="GetCalculatedPayrollDetailsByBranch_ByShiftAllowance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>sql\getcalculatedpayrolldetailsbybranch_byshiftallowance.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
