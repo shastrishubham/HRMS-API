@@ -562,21 +562,9 @@ namespace HRMS_API.Controllers
                 }
                 else
                 {
-                    string relativePath = ConfigurationManager.AppSettings["MastersTamplatePath"];
-                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
-
-                    // Final physical path
-                    string physicalBasePath = Path.GetFullPath(Path.Combine(basePath, relativePath));
-
-                    // Ensure directory exists
-                    if (!Directory.Exists(physicalBasePath))
-                    {
-                        Directory.CreateDirectory(physicalBasePath);
-                    }
-
-                    // Works in local - // 🔷 Local File System Upload
-                    //string relativePath = ConfigurationManager.AppSettings["MastersTamplatePath"]; // Example: "~/MastersTemplates"
-                    //string physicalBasePath = HostingEnvironment.MapPath(relativePath);
+                    // 🔷 Local File System Upload
+                    string relativePath = ConfigurationManager.AppSettings["MastersTamplatePath"]; // Example: "~/MastersTemplates"
+                    string physicalBasePath = HostingEnvironment.MapPath(relativePath);
 
                     // Create folder path: {BasePath}/{CompId}/{DocName}
                     string destinationFolder = Path.Combine(physicalBasePath, documentUpload.CompId.ToString(), documentUpload.DocName.ToString());
