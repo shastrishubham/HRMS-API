@@ -472,7 +472,7 @@ namespace HRMS_API.Controllers
             {
                 // 🔷 Local File System Upload
                 string relativePath = ConfigurationManager.AppSettings["EmployeeGeneratedDocumentPath"]; // e.g. "~/Generated Documents"
-                string physicalBasePath = HostingEnvironment.MapPath(relativePath);
+                string physicalBasePath = HostingEnvironment.MapPath("~/" + relativePath);
 
                 // Create folder path: {BasePath}/{CandidateName}
                 string destinationFolder = Path.Combine(physicalBasePath, empGeneratedDocDetail.CandidateFullName);
@@ -480,6 +480,9 @@ namespace HRMS_API.Controllers
 
                 // Full destination file path
                 string destinationFilePath = Path.Combine(destinationFolder, fileName);
+
+                // DB Store Path - Relative
+                string dbRelativePath = Path.Combine(relativePath, fileName).Replace("\\", "/");
 
                 // 🔷 Copy file from master template path
                 if (!System.IO.File.Exists(physicalPath))
@@ -501,7 +504,7 @@ namespace HRMS_API.Controllers
                     wordDoc.MainDocumentPart.Document.Save();
                 }
 
-                empGeneratedDocDetail.DocPath = destinationFilePath;
+                empGeneratedDocDetail.DocPath = dbRelativePath;
             }
 
             // 3. Output folder for generated documents
@@ -695,16 +698,18 @@ namespace HRMS_API.Controllers
             else
             {
                 // Local file system attachment
+                //string relativePath = @"~/UploadedFiles/Generated Documents/Swaraj Das/file.pdf";
                 string localFilePath = empGeneratedDoc.DocPath;
+                string fullPath = HostingEnvironment.MapPath("~/" + localFilePath);
 
-                if (!System.IO.File.Exists(localFilePath))
+                if (!System.IO.File.Exists(fullPath))
                 {
                     return Ok("Offer letter file not found at local path: " + localFilePath);
                 }
 
                 // Read file into stream
                 var ms = new MemoryStream();
-                using (var fileStream = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
+                using (var fileStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
                 {
                     await fileStream.CopyToAsync(ms);
                 }
@@ -713,7 +718,7 @@ namespace HRMS_API.Controllers
                 ms.Position = 0;
 
                 // Detect content type from file extension
-                string extension = Path.GetExtension(localFilePath).ToLower();
+                string extension = Path.GetExtension(fullPath).ToLower();
                 string contentType;
 
                 switch (extension)
