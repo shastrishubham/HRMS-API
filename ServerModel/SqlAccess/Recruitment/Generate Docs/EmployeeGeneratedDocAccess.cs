@@ -1,4 +1,5 @@
 ﻿using ServerModel.Data;
+using ServerModel.Model;
 using ServerModel.Model.Recruitment;
 using System;
 using System.Collections.Generic;
@@ -347,6 +348,42 @@ namespace ServerModel.SqlAccess.Recruitment.Generate_Docs
                 ProbationPeriod = reader["ProbationPeriod"] != DBNull.Value ? Convert.ToInt32(reader["ProbationPeriod"].ToString()) : 0,
                 NoticePeriod = reader["ProbationPeriod"] != DBNull.Value ? Convert.ToInt32(reader["ProbationPeriod"].ToString()) : 0,
             };
+        }
+
+        public static DataResult GetCandidatesByInterviewStatusId(Guid compId, string interviewStatusIds)
+        {
+            List<OnlineFormApplication> candidates = new List<OnlineFormApplication>();
+            string strConString = DbContext.ConnectionString;
+
+            using (var connection = new SqlConnection(strConString))
+            {
+                connection.Open();
+                string sql = Recruitment.Sql.GetCandidatesByInterviewStatusId;
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@InterviewStatusIds", interviewStatusIds);
+                    command.Parameters.AddWithValue("@compId", compId);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OnlineFormApplication candidate = new OnlineFormApplication
+                            {
+                                Id = reader["Id"] != DBNull.Value ? Guid.Parse(reader["Id"].ToString()) : Guid.Empty,
+                                CompId = reader["CompId"] != DBNull.Value ? Guid.Parse(reader["CompId"].ToString()) : Guid.Empty,
+                                FullName = reader["FullName"] != DBNull.Value ? reader["FullName"].ToString() : string.Empty,
+                            };
+
+                            candidates.Add(candidate);
+                        }
+                    }
+                }
+                return new DataResult 
+                { 
+                    data = candidates,
+                    IsSuccess = true
+                };
+            }
         }
     }
 }

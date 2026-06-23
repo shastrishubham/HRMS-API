@@ -206,7 +206,13 @@ namespace ServerModel.Masters.Recruitment
         public IEnumerable<OnlineFormApplication> GetJobApplicationsByVacancy(Guid vacancyId)
         {
             var result = (from jobApplication in jobApplicationRespository.GetAll()
+                          join interviewsSch in interviewScheduleRespository.GetAll() on jobApplication.Id equals interviewsSch.Req_JbForm_Id
+                            into g1
+                          from ct1 in g1.DefaultIfEmpty()
                           where jobApplication.Req_JbVacancy_Id.Equals(vacancyId) && jobApplication.Active == true
+                                    // 🔥 EXCLUDE THESE STATUS
+                                    && (ct1 == null || (ct1.InterviewStatus != (int)InterviewStatusTypes.Selected &&
+                                        ct1.InterviewStatus != (int)InterviewStatusTypes.Hired))
                           select new OnlineFormApplication
                           {
                               Id = jobApplication.Id,

@@ -1,5 +1,6 @@
 ﻿using ServerModel.Database;
 using ServerModel.Interfaces;
+using ServerModel.Masters;
 using ServerModel.Model;
 using ServerModel.Model.Employee;
 using ServerModel.Model.ESS;
@@ -17,6 +18,7 @@ namespace ServerModel.Repository
         private IRespository<EMP_Info> respository = null;
 
         public static IEssSetupAccess mEssSetupAccessT = new EssSetupAccessWrapper();
+       // public EmployeeHelper employeeHelper = new EmployeeHelper();
 
         public EmployeeRespository()
         {
@@ -50,6 +52,7 @@ namespace ServerModel.Repository
 
                     bool isCreatedEmpLeave = mEssSetupAccessT.AddUpdateEmployeeLeaves(employeeLeave);
                     dataResult.IsSuccess = isCreatedEmpLeave;
+                    
                 }
                 else
                 {
@@ -79,6 +82,8 @@ namespace ServerModel.Repository
                     existingEmployee.ModifiedOn = employeeInformation.ModifiedOn;
                     this.respository.Update(existingEmployee);
                     this.respository.Save();
+
+                    
                 }
             }
             catch (Exception ex)

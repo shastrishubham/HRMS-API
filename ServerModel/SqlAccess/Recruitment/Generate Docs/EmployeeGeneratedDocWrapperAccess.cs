@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ServerModel.Model;
 using ServerModel.Model.Recruitment;
+using System;
+using System.Collections.Generic;
 
 namespace ServerModel.SqlAccess.Recruitment.Generate_Docs
 {
@@ -44,6 +45,11 @@ namespace ServerModel.SqlAccess.Recruitment.Generate_Docs
         public int UpsertEmployeeGeneratedOfferLetter(EmployeeGeneratedDocument employeeGeneratedDocument)
         {
             return EmployeeGeneratedDocAccess.UpsertEmployeeGeneratedOfferLetter(employeeGeneratedDocument);
+        }
+
+        public DataResult GetCandidatesByInterviewStatusId(Guid compId, string interviewStatusIds)
+        {
+            return EmployeeGeneratedDocAccess.GetCandidatesByInterviewStatusId(compId, interviewStatusIds);
         }
     }
 }
