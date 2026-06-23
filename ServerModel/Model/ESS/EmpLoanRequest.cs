@@ -7,5 +7,6 @@ namespace ServerModel.Model.ESS
         public string FullName { get; set; }
         public string LNTypeName { get; set; }
         public decimal InterestRate { get; set; }
+        public string HRRemark { get; set; }
     }
 }

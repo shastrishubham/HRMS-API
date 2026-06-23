@@ -1,4 +1,5 @@
-﻿using ServerModel.Model.Employee;
+﻿using ServerModel.Model;
+using ServerModel.Model.Employee;
 using ServerModel.SqlAccess.EmployeeSetup.BankInfo;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,19 @@ namespace ServerModel.Employee
 
         #endregion
 
-        public static int UpsertEmployeeBankInfo(EmployeeBankInformation employeeBankInformation)
+        public static DataResult UpsertEmployeeBankInfo(EmployeeBankInformation employeeBankInformation)
         {
-            return mEmpBankInfoAccessT.UpsertEmployeeBankInfo(employeeBankInformation);
+            int id = mEmpBankInfoAccessT.UpsertEmployeeBankInfo(employeeBankInformation);
+            if (id > 0)
+            {
+                return new DataResult
+                {
+                    IsSuccess = true,
+                    data = GetEmployeeBankInfoById(employeeBankInformation.EMP_Info_Id, employeeBankInformation.CompId)
+                };
+            }
+
+            return new DataResult { IsSuccess = false };
         }
 
         public static EmployeeBankInformation GetEmployeeBankInfoById(Guid employeeId, Guid compId)

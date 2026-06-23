@@ -1,42 +1,44 @@
-﻿using ServerModel.Masters;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using DocumentFormat.OpenXml.EMMA;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using ServerModel.Data;
+using ServerModel.Masters;
+using ServerModel.Model;
 using ServerModel.Model.Masters;
 using ServerModel.Repository;
+using ServerModel.ServerModel.Helper;
+using ServerModel.ServerModel.Masters.AssetSetup;
+using ServerModel.ServerModel.Masters.BankBranchSetup;
 using ServerModel.ServerModel.Masters.BankSetup;
 using ServerModel.ServerModel.Masters.CompanySetup;
 using ServerModel.ServerModel.Masters.DepartmentSetup;
 using ServerModel.ServerModel.Masters.DesignationSetup;
+using ServerModel.ServerModel.Masters.DocumentSetup;
+using ServerModel.ServerModel.Masters.InterviewRatingSetup;
 using ServerModel.ServerModel.Masters.LeaveSetup;
+using ServerModel.ServerModel.Masters.LoanTypeSetup;
 using ServerModel.ServerModel.Masters.LocationSetup;
+using ServerModel.ServerModel.Masters.PayrollAdjustmentType;
+using ServerModel.ServerModel.Masters.PerformanceCycleSetup;
+using ServerModel.ServerModel.Masters.ReimbursementSetup;
 using ServerModel.ServerModel.Masters.SalaryHeads;
 using ServerModel.ServerModel.Masters.ShiftSetup;
+using ServerModel.ServerModel.Masters.TicketCategory;
+using ServerModel.ServerModel.Masters.TrainingSetup;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Threading.Tasks;
-using System.Net.Http;
-using ServerModel.ServerModel.Masters.BankBranchSetup;
-using ServerModel.ServerModel.Masters.InterviewRatingSetup;
-using ServerModel.ServerModel.Masters.TrainingSetup;
-using ServerModel.ServerModel.Masters.DocumentSetup;
-using System.Configuration;
-using System.Web.Hosting;
-using System.Net;
-using System.Web;
-using ServerModel.ServerModel.Masters.AssetSetup;
-using ServerModel.Data;
-using Newtonsoft.Json;
-using ServerModel.Model;
-using ServerModel.ServerModel.Masters.ReimbursementSetup;
-using ServerModel.ServerModel.Masters.TicketCategory;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System.Linq;
-using ServerModel.ServerModel.Masters.LoanTypeSetup;
-using ServerModel.ServerModel.Masters.PayrollAdjustmentType;
-using ServerModel.ServerModel.Helper;
 
 namespace HRMS_API.Controllers
 {
@@ -777,6 +779,65 @@ namespace HRMS_API.Controllers
         public int UpsertPayrollAdjustmentType(PayrollAdjustmentType adjustmentType)
         {
             return PayrollAdjustmentTypeServer.UpsertPayrollAdjustmentType(adjustmentType);
+        }
+
+        #endregion
+
+        #region Performance Cycle
+
+        [AllowAnonymous]
+        [Route("api/Masters/GetPerformanceCycleById")]
+        [HttpGet]
+        public PerformanceCycle GetPerformanceCycleById(int cycleId)
+        {
+            return PerformanceCycleSetupServer.GetPerformanceCycleById(cycleId);
+        }
+
+        [AllowAnonymous]
+        [Route("api/Masters/GetPerformanceCyclesByCompId")]
+        [HttpGet]
+        public List<PerformanceCycle> GetPerformanceCyclesByCompId(Guid compId)
+        {
+            return PerformanceCycleSetupServer.GetPerformanceCyclesByCompId(compId);
+        }
+
+        [AllowAnonymous]
+        [Route("api/Masters/UpsertPerformanceCycles")]
+        [HttpPost]
+        public int UpsertPerformanceCycles(PerformanceCycle performanceCycle)
+        {
+            return PerformanceCycleSetupServer.UpsertPerformanceCycles(performanceCycle);
+        }
+
+        #endregion
+
+
+
+        #region PMS Goal Categories
+
+
+        [AllowAnonymous]
+        [Route("api/Masters/GetGoalCategoriesByCompId")]
+        [HttpGet]
+        public List<PMSGoalCategory> GetGoalCategoriesByCompId(Guid compId)
+        {
+            return PerformanceCycleSetupServer.GetGoalCategoriesByCompId(compId);
+        }
+
+        [AllowAnonymous]
+        [Route("api/Masters/GetGoalCategoryById")]
+        [HttpGet]
+        public PMSGoalCategory GetGoalCategoryById(int categoryId)
+        {
+            return PerformanceCycleSetupServer.GetGoalCategoryById(categoryId);
+        }
+
+        [AllowAnonymous]
+        [Route("api/Masters/UpsertPMSGoalCategory")]
+        [HttpPost]
+        public int UpsertPMSGoalCategory(PMSGoalCategory goalCategory)
+        {
+            return PerformanceCycleSetupServer.UpsertPMSGoalCategory(goalCategory);
         }
 
         #endregion

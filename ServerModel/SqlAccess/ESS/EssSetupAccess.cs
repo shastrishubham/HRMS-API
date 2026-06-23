@@ -563,6 +563,7 @@ namespace ServerModel.SqlAccess.ESS
                 TenureMonths = reader["TenureMonths"] != DBNull.Value ? Convert.ToInt32(reader["TenureMonths"].ToString()) : 0,
                 Status = reader["Status"] != DBNull.Value ? reader["Status"].ToString() : string.Empty,
                 Remark = reader["Remark"] != DBNull.Value ? reader["Remark"].ToString() : string.Empty,
+                HRRemark = reader["HRRemark"] != DBNull.Value ? reader["HRRemark"].ToString() : "Not Yet Review"
             };
         }
 

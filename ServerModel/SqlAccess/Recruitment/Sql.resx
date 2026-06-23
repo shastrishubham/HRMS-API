@@ -121,6 +121,9 @@
   <data name="GetCandidateDetailsForGenerateDocById" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sql\getcandidatedetailsforgeneratedocbyid.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="GetCandidatesByInterviewStatusId" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sql\GetCandidatesByInterviewStatusId.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="GetConfirmedCandidatesByCompId" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sql\getconfirmedcandidatesbycompid.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

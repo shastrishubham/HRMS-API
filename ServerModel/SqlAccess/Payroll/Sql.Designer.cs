@@ -19,10 +19,10 @@ namespace ServerModel.SqlAccess.Payroll {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Sql {
+    public class Sql {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ServerModel.SqlAccess.Payroll.Sql", typeof(Sql).Assembly);
@@ -51,7 +51,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -81,7 +81,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///    FROM EMP_Punch
         ///    WHERE Status IN (&apos;In&apos;, &apos;Out [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetCalculatedPayrollDetailsByBranch {
+        public static string GetCalculatedPayrollDetailsByBranch {
             get {
                 return ResourceManager.GetString("GetCalculatedPayrollDetailsByBranch", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///        CAST(PunchDate AS DATE) AS WorkDate,
         ///        MIN(CAST(PunchTime AS TIME)) AS FirstPun [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetCalculatedPayrollDetailsByBranch_ByShiftAllowance {
+        public static string GetCalculatedPayrollDetailsByBranch_ByShiftAllowance {
             get {
                 return ResourceManager.GetString("GetCalculatedPayrollDetailsByBranch_ByShiftAllowance", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///        adj.AdjustmentType,
         ///        ad [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetCalculatedSalaryAdjustmentByAdjustmentIdByEmployees {
+        public static string GetCalculatedSalaryAdjustmentByAdjustmentIdByEmployees {
             get {
                 return ResourceManager.GetString("GetCalculatedSalaryAdjustmentByAdjustmentIdByEmployees", resourceCulture);
             }
@@ -169,7 +169,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///    ra.Approver_Emp_Id,
         ///	empApp [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetEmployeeReimbursementsByBranchAndMonth {
+        public static string GetEmployeeReimbursementsByBranchAndMonth {
             get {
                 return ResourceManager.GetString("GetEmployeeReimbursementsByBranchAndMonth", resourceCulture);
             }
@@ -196,7 +196,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///    slHead.IsEarningComponent,
         ///    slHead.IsShowInSalarySlip [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetEmployeeSalaryHeadsDetails {
+        public static string GetEmployeeSalaryHeadsDetails {
             get {
                 return ResourceManager.GetString("GetEmployeeSalaryHeadsDetails", resourceCulture);
             }
@@ -220,7 +220,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///      ,payrollEmpSL.MS_SLHeads_Id
         ///	  ,slHead.Is [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetEmployeeSalarySlipByMonthAndId {
+        public static string GetEmployeeSalarySlipByMonthAndId {
             get {
                 return ResourceManager.GetString("GetEmployeeSalarySlipByMonthAndId", resourceCulture);
             }
@@ -247,7 +247,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///
         ///S [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetEmpPayrollByBranchMonth {
+        public static string GetEmpPayrollByBranchMonth {
             get {
                 return ResourceManager.GetString("GetEmpPayrollByBranchMonth", resourceCulture);
             }
@@ -273,7 +273,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///	FROM PR_EMP_SL_Adjustment AS sladj
         ///		INNER JOIN EMP_Info AS emp ON emp.Id = sladj.EMP_Inf [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetSalaryAdjustmentEmployeesByCompId {
+        public static string GetSalaryAdjustmentEmployeesByCompId {
             get {
                 return ResourceManager.GetString("GetSalaryAdjustmentEmployeesByCompId", resourceCulture);
             }
@@ -307,7 +307,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///				ELSE 
         ///				  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GetSalaryAdjustmentsByPayrollMonthYear {
+        public static string GetSalaryAdjustmentsByPayrollMonthYear {
             get {
                 return ResourceManager.GetString("GetSalaryAdjustmentsByPayrollMonthYear", resourceCulture);
             }
@@ -329,7 +329,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///        Amount = source.Amount,
         ///        MS_Payroll_AdjstType_Id = source.MS_Payroll_AdjstType_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string UpsertEmpSalaryAdjustment {
+        public static string UpsertEmpSalaryAdjustment {
             get {
                 return ResourceManager.GetString("UpsertEmpSalaryAdjustment", resourceCulture);
             }
@@ -356,7 +356,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///		&quot;TotalEarning&quot;: 7750.0000000000,
         ///		&quot;TotalDeduction&quot;: 1966.6 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string UpsertPayrollCreation {
+        public static string UpsertPayrollCreation {
             get {
                 return ResourceManager.GetString("UpsertPayrollCreation", resourceCulture);
             }
@@ -383,7 +383,7 @@ namespace ServerModel.SqlAccess.Payroll {
         ///		&quot;Amount&quot;: 15,
         ///		 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string UpsertPayrollReimbursements {
+        public static string UpsertPayrollReimbursements {
             get {
                 return ResourceManager.GetString("UpsertPayrollReimbursements", resourceCulture);
             }

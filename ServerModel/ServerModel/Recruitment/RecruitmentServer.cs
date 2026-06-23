@@ -1,5 +1,6 @@
 ﻿using ServerModel.Database;
 using ServerModel.Interfaces;
+using ServerModel.Model;
 using ServerModel.Model.Recruitment;
 using ServerModel.SqlAccess.Recruitment.Generate_Docs;
 using System;
@@ -53,6 +54,11 @@ namespace ServerModel.ServerModel.Recruitment
         public static List<EmployeeGeneratedDocument> GetConfirmedCandidatesByCompId(Guid compId, string status)
         {
             return mEmpGenerateDocSetupAccessT.GetConfirmedCandidatesByCompId(compId, status);
+        }
+
+        public static DataResult GetCandidatesByInterviewStatusId(Guid compId, string interviewStatusIds)
+        {
+            return mEmpGenerateDocSetupAccessT.GetCandidatesByInterviewStatusId(compId, interviewStatusIds);
         }
 
     }

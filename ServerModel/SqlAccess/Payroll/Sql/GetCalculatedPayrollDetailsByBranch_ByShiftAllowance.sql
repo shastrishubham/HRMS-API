@@ -215,7 +215,7 @@ PayrollCalculation AS (
 	LEFT JOIN LoanDeductions ld ON ld.EMP_Info_Id = e.Id
 	LEFT JOIN AdjEarning ae ON ae.EMP_Info_Id = e.Id
     LEFT JOIN AdjDeduction ad ON ad.EMP_Info_Id = e.Id
-	WHERE e.DateOfJoining <= DATEFROMPARTS(@Year, @Month, 31)
+	WHERE e.DateOfJoining <= EOMONTH(DATEFROMPARTS(@Year, @Month, 1))
 		AND (e.ConfirmationDate IS NULL 
 			OR MONTH(e.ConfirmationDate) <= @Month OR YEAR(e.ConfirmationDate) <= @Year)
 )

@@ -111,7 +111,9 @@ namespace HRMS_API.Controllers
         [HttpPost]
         public DataResult AddUpdateEmployeeInformation(EmployeeInformation employeeInformation)
         {
-            return employeeRespository.AddUpdateEmployee(employeeInformation);
+            DataResult dataResult = employeeRespository.AddUpdateEmployee(employeeInformation);
+            dataResult.data = employeeHelper.GetEmployeeInformationById(employeeInformation.Id);
+            return dataResult;
         }
 
         [Route("api/Employee/GetEmployeesByCompanyId")]
@@ -418,7 +420,7 @@ namespace HRMS_API.Controllers
         #region Employee BankInformation
         [Route("api/Employee/AddUpdateEmployeeBankInfo")]
         [HttpPost]
-        public int AddUpdateEmployeeBankInfo(EmployeeBankInformation employeeBankInformation)
+        public DataResult AddUpdateEmployeeBankInfo(EmployeeBankInformation employeeBankInformation)
         {
             return EmployeeBankInformationServer.UpsertEmployeeBankInfo(employeeBankInformation);
         }
