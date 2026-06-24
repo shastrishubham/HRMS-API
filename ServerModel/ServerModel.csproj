@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -32,6 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.36.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.36.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Blobs, Version=12.19.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Storage.Blobs.12.19.1\lib\netstandard2.0\Azure.Storage.Blobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Common, Version=12.18.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Storage.Common.12.18.1\lib\netstandard2.0\Azure.Storage.Common.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,19 +60,19 @@
       <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.3.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.ObjectPool, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.8.0.11\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=8.0.11.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.8.0.11\lib\net462\Microsoft.Extensions.ObjectPool.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.2\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.2\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.3.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.Headers.2.3.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
@@ -75,30 +84,54 @@
       <HintPath>..\packages\Newtonsoft.Json.Schema.3.0.14\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.6.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Hashing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Hashing.6.0.0\lib\net461\System.IO.Hashing.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.1\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Json, Version=7.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Json.7.0.3\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -329,6 +362,16 @@
     <Compile Include="Employee\EmployeePersonalInformationServer.cs" />
     <Compile Include="Employee\EmployeeQualificationInformationServer.cs" />
     <Compile Include="Employee\EmployeeWorkExperienceInformationServer.cs" />
+    <Compile Include="Entity\PMS\HRCalibrationReview.cs" />
+    <Compile Include="Entity\PMS\ManagerEvaluation.cs" />
+    <Compile Include="Entity\PMS\ManagerEvaluationDetails.cs" />
+    <Compile Include="Entity\PMS\PMSEmployeeGoals.cs" />
+    <Compile Include="Entity\PMS\PMSFeedbacks.cs" />
+    <Compile Include="Entity\PMS\PMSGoalApprovals.cs" />
+    <Compile Include="Entity\PMS\PMSPerformanceCheckIns.cs" />
+    <Compile Include="Entity\PMS\PMSPerformanceOutcomes.cs" />
+    <Compile Include="Entity\PMS\SelfEvaluationDetails.cs" />
+    <Compile Include="Entity\PMS\SelfEvaluations.cs" />
     <Compile Include="Entity\Punch\Punch_InOutTime.cs" />
     <Compile Include="Interfaces\IRespository.cs" />
     <Compile Include="Masters\BranchSetupServerModel.cs" />
@@ -338,6 +381,7 @@
     <Compile Include="Masters\PunchHelper.cs" />
     <Compile Include="Masters\Recruitment\RecruitmentHelper.cs" />
     <Compile Include="Model\Base\CompanyDocumentTypes.cs" />
+    <Compile Include="Model\Base\EmployeeGoalCreationStatusTypes.cs" />
     <Compile Include="Model\Base\InterviewFeedbackRates.cs" />
     <Compile Include="Model\Base\InterviewModeTypes.cs" />
     <Compile Include="Model\Base\InterviewStatusTypes.cs" />
@@ -348,6 +392,7 @@
     <Compile Include="Model\Base\LeaveTypes.cs" />
     <Compile Include="Model\Base\LoanStatusTypes.cs" />
     <Compile Include="Model\Base\OfferLetterStatusTypes.cs" />
+    <Compile Include="Model\Base\SelfEvaluationStatusTypes.cs" />
     <Compile Include="Model\Base\TrainingStatusTypes.cs" />
     <Compile Include="Model\Dashboard\BranchWiseEmployeeDto.cs" />
     <Compile Include="Model\Dashboard\DashboardResponseDto.cs" />
@@ -407,6 +452,9 @@
     <Compile Include="Model\Masters\LoanSetupInfo.cs" />
     <Compile Include="Model\Masters\LocationRegistration.cs" />
     <Compile Include="Model\Masters\PayrollAdjustmentType.cs" />
+    <Compile Include="Model\Masters\PerformanceBand.cs" />
+    <Compile Include="Model\Masters\PerformanceCycle.cs" />
+    <Compile Include="Model\Masters\PMSGoalCategory.cs" />
     <Compile Include="Model\Masters\ReimbursementTypes.cs" />
     <Compile Include="Model\Masters\SalaryHeadsInfo.cs" />
     <Compile Include="Model\Masters\ShiftInfo.cs" />
@@ -416,6 +464,17 @@
     <Compile Include="Model\Payroll\PayrollInformation.cs" />
     <Compile Include="Model\Payroll\PayrollReimbursement.cs" />
     <Compile Include="Model\Payroll\SalaryAdjustment.cs" />
+    <Compile Include="Model\PMS\EmpSelfEvaluationDetails.cs" />
+    <Compile Include="Model\PMS\EmpSelfEvaluations.cs" />
+    <Compile Include="Model\PMS\GoalDetails.cs" />
+    <Compile Include="Model\PMS\HRCalibrationReviewDetail.cs" />
+    <Compile Include="Model\PMS\MngrEvaluation.cs" />
+    <Compile Include="Model\PMS\MngrEvaluationGoalDetail.cs" />
+    <Compile Include="Model\PMS\PMSEmpCheckIns.cs" />
+    <Compile Include="Model\PMS\PMSEmpGoalApproval.cs" />
+    <Compile Include="Model\PMS\PMSEmpGoals.cs" />
+    <Compile Include="Model\PMS\PMSFeedbackDetails.cs" />
+    <Compile Include="Model\PMS\PMSPerformanceOutcomesDetail.cs" />
     <Compile Include="Model\Punch\EmployeeAttendanceInfo.cs" />
     <Compile Include="Model\Punch\PunchInOut.cs" />
     <Compile Include="Model\Recruitment\EmployeeGeneratedDocument.cs" />
@@ -467,12 +526,14 @@
     <Compile Include="ServerModel\Masters\LoanTypeSetup\LoanTypeSetupServer.cs" />
     <Compile Include="ServerModel\Masters\LocationSetup\LocationSetupServer.cs" />
     <Compile Include="ServerModel\Masters\PayrollAdjustmentType\PayrollAdjustmentTypeServer.cs" />
+    <Compile Include="ServerModel\Masters\PerformanceCycleSetup\PerformanceCycleSetupServer.cs" />
     <Compile Include="ServerModel\Masters\ReimbursementSetup\ReimbursementSetupServer.cs" />
     <Compile Include="ServerModel\Masters\SalaryHeads\SalaryHeadsServer.cs" />
     <Compile Include="ServerModel\Masters\ShiftSetup\ShiftSetupServer.cs" />
     <Compile Include="ServerModel\Masters\TicketCategory\TicketCategorySetupServer.cs" />
     <Compile Include="ServerModel\Masters\TrainingSetup\TrainingSetupServer.cs" />
     <Compile Include="ServerModel\Payroll\PayrollInfoServer.cs" />
+    <Compile Include="ServerModel\PMS\PMSInfoServer.cs" />
     <Compile Include="ServerModel\Punch\PunchInfoServer.cs" />
     <Compile Include="ServerModel\Recruitment\RecruitmentServer.cs" />
     <Compile Include="ServerModel\Report\ReportInfoServer.cs" />
@@ -647,6 +708,12 @@
     <Compile Include="SqlAccess\MasterSetup\PayrollAdjustmentTypes\IPayrollAdjustmentsAccess.cs" />
     <Compile Include="SqlAccess\MasterSetup\PayrollAdjustmentTypes\PayrollAdjustmentsAccess.cs" />
     <Compile Include="SqlAccess\MasterSetup\PayrollAdjustmentTypes\PayrollAdjustmentsAccessWrapper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PerformanceCycle\IPerformanceCycleAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PerformanceCycle\PerformanceCycleAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PerformanceCycle\PerformanceCycleAccessWraper.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PMSGoalCategories\IPMSGoalCategoryAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PMSGoalCategories\PMSGoalCategoryAccess.cs" />
+    <Compile Include="SqlAccess\MasterSetup\PMSGoalCategories\PMSGoalCategoryAccessWrapper.cs" />
     <Compile Include="SqlAccess\MasterSetup\ReimbursementTypes\IReimbursementTypesAccess.cs" />
     <Compile Include="SqlAccess\MasterSetup\ReimbursementTypes\ReimbursementTypesAccess.cs" />
     <Compile Include="SqlAccess\MasterSetup\ReimbursementTypes\ReimbursementTypesAccessWrapper.cs" />
@@ -663,6 +730,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlAccess\PMS\IPMSAccess.cs" />
+    <Compile Include="SqlAccess\PMS\PMSAccess.cs" />
+    <Compile Include="SqlAccess\PMS\PMSAccessWrapper.cs" />
+    <Compile Include="SqlAccess\PMS\PMSSqls.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMSSqls.resx</DependentUpon>
     </Compile>
     <Compile Include="SqlAccess\Punch\PunchSetupAccess.cs" />
     <Compile Include="SqlAccess\Punch\PunchSql.Designer.cs">
@@ -766,6 +841,10 @@
     <Content Include="SqlAccess\HR\Sqls\GetHRLoanRequestsByStatus.sql" />
     <Content Include="SqlAccess\HR\Sqls\UpsertHRLoanRequest.sql" />
     <Content Include="SqlAccess\Login\Sql\UpsertLogInOutUser.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetGoalCategoriesById.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetGoalCategoriesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetPerformanceCyclesByCompId.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\GetPerformanceCycleById.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\GetPayrollAdjustmentTypesByCompId.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\GetLoanTypesByCompId.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\GetReimbursementTypesByCompId.sql" />
@@ -794,6 +873,8 @@
     <Content Include="SqlAccess\MasterSetup\Sqls\GetDepartmentDetailsByCompId.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\GetLocationDetailsByCompId.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\GetLocationDetails.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertPMSGoalCategory.sql" />
+    <Content Include="SqlAccess\MasterSetup\Sqls\UpsertPerformanceCycles.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\UpsertPayrollAdjustmentType.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\UpsertLoanType.sql" />
     <Content Include="SqlAccess\MasterSetup\Sqls\UpsertTicketCategory.sql" />
@@ -826,12 +907,40 @@
     <Content Include="SqlAccess\Payroll\Sql\UpsertPayrollCreation.sql" />
     <Content Include="SqlAccess\Payroll\Sql\GetCalculatedPayrollDetailsByBranch.sql" />
     <Content Include="SqlAccess\Payroll\Sql\GetEmpPayrollByBranchMonth.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetPMSFeedbackDetailsByCycleId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetPerformanceOutcomesByCycleId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetMngrEvaluatedEmpByCycleId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmployeesByCycleIdAndStatus.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmpGoalsApprovalStatusByCycleId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetMngrEvaluationGoalDetailsByCycleAndEmp.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetGoalDetailsByGoadId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetHRCalibrationReviewsByCycleId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmpSelfEvaluationGoalDetailsByCycleAndEmp.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetManagerEvaluationsByDates.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetManagerEvaluationsByMngrId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmployeesSelfEvaluationsByStatus.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmpGoalProgressByEmpId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmpGoalProgressByGoalId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmployeeGoalsByEmpId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetGoalsApprovalsByCompId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\GetEmployeesGoalsByCompId.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertEmpGoalApproval.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertEmpGoalProgress.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertEmpFeedback.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertHRCalibrationReviews.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertPerformanceOutcomes.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertManagerEvaluationDetails.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertManagerEvaluation.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertEmpSelfEvaluationDetails.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertEmpSelfEvaluation.sql" />
+    <Content Include="SqlAccess\PMS\Sqls\UpsertEmployeeGoals.sql" />
     <Content Include="SqlAccess\Punch\Sql\GetEmployeesPunchesByComIdAndShiftId.sql" />
     <Content Include="SqlAccess\Punch\Sql\GetEmployeePunches.sql" />
     <Content Include="SqlAccess\Punch\Sql\GetPresentEmpByBranch.sql" />
     <Content Include="SqlAccess\Punch\Sql\AddPunchInOut.sql" />
     <Content Include="SqlAccess\Recruitment\Sql\GetDocGeneratedCandidatesByCompId.sql" />
     <Content Include="SqlAccess\Recruitment\Sql\GetConfirmedCandidatesByCompId.sql" />
+    <Content Include="SqlAccess\Recruitment\Sql\GetCandidatesByInterviewStatusId.sql" />
     <Content Include="SqlAccess\Recruitment\Sql\UpdateGeneratedDocStatusById.sql" />
     <Content Include="SqlAccess\Recruitment\Sql\GetGeneratedDocById.sql" />
     <Content Include="SqlAccess\Recruitment\Sql\GetGeneratedDocumentsByCompId.sql" />
@@ -915,8 +1024,12 @@
       <LastGenOutput>MasterSetupSqls.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SqlAccess\Payroll\Sql.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlAccess\PMS\PMSSqls.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PMSSqls.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SqlAccess\Punch\PunchSql.resx">
       <Generator>ResXFileCodeGenerator</Generator>
