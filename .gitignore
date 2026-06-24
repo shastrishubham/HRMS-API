@@ -14,3 +14,6 @@
 /.vs
 /HRMS-API/bin
 /HRMS-API/obj
+/HRMS-API/.vs
+/HRMS-API/UploadedFiles
+/ServerModel/.vs/ServerModel.csproj.dtbcache.json
