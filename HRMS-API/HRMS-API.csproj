@@ -702,12 +702,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServerModel\ServerModel.csproj">
-      <Project>{7F49F6EC-D258-4957-9BE4-C187A7675DC4}</Project>
-      <Name>ServerModel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
