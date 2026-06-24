@@ -1,6 +1,4 @@
-﻿using ServerModel.Model;
-using ServerModel.Model.Recruitment;
-using ServerModel.ServerModel.Recruitment;
+﻿using ServerModel.Model.Recruitment;
 using System;
 using System.Collections.Generic;
 
@@ -23,7 +21,5 @@ namespace ServerModel.SqlAccess.Recruitment.Generate_Docs
         bool UpdateGeneratedDocStatusById(int documentId, string status);
 
         List<EmployeeGeneratedDocument> GetConfirmedCandidatesByCompId(Guid compId, string status);
-
-        DataResult GetCandidatesByInterviewStatusId(Guid compId, string interviewStatusIds);
     }
 }

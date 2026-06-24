@@ -259,22 +259,4 @@
   <data name="UpsertReimbursementTypes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>sqls\upsertreimbursementtypes.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="UpsertPerformanceCycles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Sqls\UpsertPerformanceCycles.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="GetGoalCategoriesByCompId" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Sqls\GetGoalCategoriesByCompId.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="GetPerformanceCycleById" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Sqls\GetPerformanceCycleById.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="GetPerformanceCyclesByCompId" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Sqls\GetPerformanceCyclesByCompId.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="GetGoalCategoriesById" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Sqls\GetGoalCategoriesById.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="UpsertPMSGoalCategory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Sqls\UpsertPMSGoalCategory.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
 </root>

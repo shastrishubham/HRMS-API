@@ -19,7 +19,7 @@ namespace ServerModel.SqlAccess.MasterSetup {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class MasterSetupSqls {
@@ -444,47 +444,6 @@ namespace ServerModel.SqlAccess.MasterSetup {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ////*
-        ///--- GetGoalCategoriesByCompId.Sql
-        ///
-        ///DECLARE @CompId UNIQUEIDENTIFIER = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos; 
-        ///
-        ///*/
-        ///
-        ///SELECT CategoryId
-        ///      ,CompId
-        ///      ,CategoryName
-        ///  FROM MS_GoalCategories
-        ///  WHERE CompId = @CompId.
-        /// </summary>
-        internal static string GetGoalCategoriesByCompId {
-            get {
-                return ResourceManager.GetString("GetGoalCategoriesByCompId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to /*
-        ///--- GetGoalCategoriesById.Sql
-        ///
-        ///DECLARE @Id INT = 1;
-        ///
-        ///*/
-        ///
-        ///SELECT CategoryId
-        ///      ,CompId
-        ///      ,CategoryName
-        ///  FROM MS_GoalCategories
-        ///  WHERE CategoryId = @Id.
-        /// </summary>
-        internal static string GetGoalCategoriesById {
-            get {
-                return ResourceManager.GetString("GetGoalCategoriesById", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
         ///
         ///
         ////*
@@ -719,56 +678,6 @@ namespace ServerModel.SqlAccess.MasterSetup {
         internal static string GetPayrollAdjustmentTypesByCompId {
             get {
                 return ResourceManager.GetString("GetPayrollAdjustmentTypesByCompId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///
-        ///--Sql.GetPerformanceCycleById
-        ////*
-        ///DECLARE @Id INT = 1
-        ///
-        ///*/
-        ///
-        ///SELECT [CycleId]
-        ///      ,[CompId]
-        ///      ,[CycleName]
-        ///      ,[StartDate]
-        ///      ,[EndDate]
-        ///      ,[ReviewType]
-        ///      ,[Status]
-        ///  FROM [MS_PerformanceCycles]
-        ///  WHERE CycleId = @Id.
-        /// </summary>
-        internal static string GetPerformanceCycleById {
-            get {
-                return ResourceManager.GetString("GetPerformanceCycleById", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///
-        ///--Sql.GetPerformanceCyclesByCompId
-        ////*
-        ///DECLARE @CompId UNIQUEIDENTIFIER = NEWID();
-        ///
-        ///*/
-        ///
-        ///SELECT [CycleId]
-        ///      ,[CompId]
-        ///      ,[CycleName]
-        ///      ,[StartDate]
-        ///      ,[EndDate]
-        ///      ,[ReviewType]
-        ///      ,[Status]
-        ///  FROM [MS_PerformanceCycles]
-        ///  WHERE CompId = @CompId.
-        /// </summary>
-        internal static string GetPerformanceCyclesByCompId {
-            get {
-                return ResourceManager.GetString("GetPerformanceCyclesByCompId", resourceCulture);
             }
         }
         
@@ -1385,54 +1294,6 @@ namespace ServerModel.SqlAccess.MasterSetup {
         internal static string UpsertPayrollAdjustmentType {
             get {
                 return ResourceManager.GetString("UpsertPayrollAdjustmentType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ////**
-        ///--UpsertPerformanceCycle.Sql
-        ///
-        ///--select * from MS_PerformanceCycles
-        ///
-        ///DECLARE @CycleId int = 1;
-        ///DECLARE @MachineId NVARCHAR(255) = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos;;
-        ///DECLARE @MachineIp NVARCHAR(255) = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos;;
-        ///DECLARE @CompId uniqueidentifier = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos;;
-        ///DECLARE @CycleName nvarchar(MAX) = &apos;name23&apos;;
-        ///DECLARE @StartDate DATETIME2 = GETDATE();
-        ///DECLARE @EndDate DATETIME2 = GETDATE();
-        ///DECLARE @ReviewType NVARCHAR(50) = &apos;rrr&apos;;
-        ///DECLA [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string UpsertPerformanceCycles {
-            get {
-                return ResourceManager.GetString("UpsertPerformanceCycles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ////**
-        ///--UpsertPMSGoalCategory.Sql
-        ///
-        ///--select * from MS_GoalCategories
-        ///
-        ///DECLARE @CategoryId int = 1;
-        ///DECLARE @MachineId NVARCHAR(255) = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos;;
-        ///DECLARE @MachineIp NVARCHAR(255) = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos;;
-        ///DECLARE @CompId uniqueidentifier = &apos;D33691FC-7EB9-4D1C-888C-4F4B6E204680&apos;;
-        ///DECLARE @CategoryName nvarchar(MAX) = &apos;name23&apos;;
-        ///DECLARE @CreatedBy uniqueidentifier = NEWID();
-        ///DECLARE @ModifiedBy uniqueidentifier = NEWID();
-        ///DECLARE @Active bit = 1;
-        ///
-        ///*/
-        ///        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string UpsertPMSGoalCategory {
-            get {
-                return ResourceManager.GetString("UpsertPMSGoalCategory", resourceCulture);
             }
         }
         

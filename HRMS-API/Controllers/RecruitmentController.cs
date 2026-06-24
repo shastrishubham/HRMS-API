@@ -372,13 +372,6 @@ namespace HRMS_API.Controllers
             return RecruitmentServer.GetConfirmedCandidatesByCompId(compId, status);
         }
 
-        [Route("api/Recruitment/GetCandidatesByInterviewStatusIds")]
-        [HttpGet]
-        public DataResult GetCandidatesByInterviewStatusId(Guid compId, string interviewStatusIds)
-        {
-            return RecruitmentServer.GetCandidatesByInterviewStatusId(compId, interviewStatusIds);
-        }
-
 
         [Route("api/Recruitment/DraftOfferLetter")]
         [HttpPost]
@@ -479,7 +472,7 @@ namespace HRMS_API.Controllers
             {
                 // 🔷 Local File System Upload
                 string relativePath = ConfigurationManager.AppSettings["EmployeeGeneratedDocumentPath"]; // e.g. "~/Generated Documents"
-                string physicalBasePath = HostingEnvironment.MapPath(relativePath);
+                string physicalBasePath = HostingEnvironment.MapPath("~/" + relativePath);
 
                 // Create folder path: {BasePath}/{CandidateName}
                 string destinationFolder = Path.Combine(physicalBasePath, empGeneratedDocDetail.CandidateFullName);
@@ -511,7 +504,7 @@ namespace HRMS_API.Controllers
                     wordDoc.MainDocumentPart.Document.Save();
                 }
 
-                empGeneratedDocDetail.DocPath = destinationFilePath;
+                empGeneratedDocDetail.DocPath = dbRelativePath;
             }
 
             // 3. Output folder for generated documents
@@ -707,23 +700,11 @@ namespace HRMS_API.Controllers
                 // Local file system attachment
                 //string relativePath = @"~/UploadedFiles/Generated Documents/Swaraj Das/file.pdf";
                 string localFilePath = empGeneratedDoc.DocPath;
-                string fullPath = string.Empty;
-
-                // 🔥 FIX: Handle physical OR relative path
-                if (Path.IsPathRooted(localFilePath))
-                {
-                    // Already physical path
-                    fullPath = localFilePath;
-                }
-                else
-                {
-                    // Relative path → convert to physical
-                    fullPath = HostingEnvironment.MapPath("~/" + localFilePath.TrimStart('/'));
-                }
+                string fullPath = HostingEnvironment.MapPath("~/" + localFilePath);
 
                 if (!System.IO.File.Exists(fullPath))
                 {
-                    return Ok("Offer letter file not found at path: " + fullPath);
+                    return Ok("Offer letter file not found at local path: " + localFilePath);
                 }
 
                 // Read file into stream

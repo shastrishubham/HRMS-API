@@ -59,6 +59,7 @@ SalarySummary AS (
         SUM(CASE WHEN slhead.IsEarningComponent = 0 AND slhead.SalaryHeadName <> 'CTC' THEN es.Amount ELSE 0 END)/12 AS TotalDeductions
     FROM EMP_SLHeads es
 	WHERE es.IsAmmend = 0
+    INNER JOIN MS_SLHeads slhead ON slhead.Id = es.MS_SLHeads_Id
     GROUP BY es.EMP_Info_Id
 ),
 
